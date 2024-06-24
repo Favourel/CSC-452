@@ -4,7 +4,8 @@
 {% load mentions %}
 {% block title %} "{{ request.GET.q }}" | Elodimuor Search {% endblock %}
 
-
+{% load pwa %}
+{% progressive_web_app_meta %}
 {% block content %}
 <div class="col-lg-6">
     {% if messages %}

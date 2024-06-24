@@ -16,9 +16,10 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="icon" href="{% static 'images/falcon_LGfm6ox.png' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <title>
-        CSC 452 - MCC | Login
+        CSC 452 - Campus Connect | Login
     </title>
 </head>
 
@@ -36,14 +37,112 @@
 <body>
 
 
-<div class="login-container">
-    <div class="right-side" align="center">
-        <h3 class="mt-5">
+<!--<div class="large_screen_login d-none">-->
+<!--    <div class="login-container ">-->
+<!--        <div class="right-side" align="center">-->
+<!--            <h3 class="mt-5">-->
+<!--                <b>Sign in with Matric Number</b>-->
+<!--                <p style="font-size: 15px">Username is case-sensitive.-->
+<!--                    Kindly ensure the alphabet is in upper-case.</p>-->
+<!--            </h3>-->
+<!--            <div class="col-8">-->
+<!--                <form id="login-form" method="POST" action="">-->
+<!--                    {% csrf_token %}-->
+<!--                    <div class="form-group">-->
+<!--                        <br>-->
+<!--                        <br>-->
+<!--                        <br>-->
+<!--                        {{ form|crispy }}-->
+<!--                        <small class="text-muted float-left">-->
+<!--                            Show password-->
+<!--                        </small>-->
+<!--                        <br>-->
+<!--                        <label class="switch">-->
+<!--                            <input type="checkbox" id="togglePassword">-->
+<!--                            <span class="slider round"></span>-->
+<!--                        </label>-->
+<!--                    </div>-->
+
+<!--                    <br>-->
+<!--                    <button style="border-radius: 24px" id="submit" type="submit" class="btn btn-info btn-block">-->
+<!--                        <div class="spinner-border text-light hidden" id="spinner" role="status">-->
+<!--                            <span class="sr-only">Loading...</span>-->
+<!--                        </div>-->
+
+<!--                        <span id="button-text">LOGIN</span>-->
+<!--                    </button>-->
+<!--                    <style>-->
+<!--                        .spinner-border {-->
+<!--                            width: 1.5rem;-->
+<!--                            height: 1.5rem;-->
+<!--                        }-->
+
+
+<!--                    </style>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="left-side">-->
+<!--            <a class="brand-logo order-row" href="/">-->
+<!--                <div style="display:block">-->
+<!--                    <h2 style="color: white;display: inline-block; font-family:-->
+<!--                    vremenagrotesk,sans-serif;font-weight: 900;">-->
+<!--                        <b>CAMPUS CONNECT</b>-->
+<!--                    </h2>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <br>-->
+<!--            <br>-->
+<!--            {% include 'users/svg.html' %}-->
+<!--            <h3 class="mb-2 text-light">-->
+<!--                <b>Hey, welcome!</b>-->
+<!--                <br>-->
+<!--                <b class="mt-2">Sign in to CAMPUS CONNECT.</b>-->
+<!--            </h3>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;    <a href="javascript:history.go(-1)" class="btn mt-2 mb-3 btn-outline-info">&#x2190; Go back</a>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+
+<section class="phone_size">
+    <div id="reg-form" style="overflow: hidden">
+        <a class="brand-logo order-row" href="/">
+            <div style="display:block">
+                <h2 style="color: white;display: inline-block; font-family:
+                    vremenagrotesk,sans-serif;font-weight: 900;">
+                    <b>CAMPUS CONNECT</b>
+                </h2>
+            </div>
+        </a>
+        <br>
+        <br>
+        {% include 'users/svg_phone.html' %}
+        <h4 class="mb-2 text-light mt-3">
+            <b>Hey, welcome!</b>
+            <br>
+            <b class="mt-2">Sign in to CAMPUS CONNECT.</b>
+        </h4>
+
+        <br>
+        <br>
+        <a class="text-light product btn btn-info btn-block" id="show-next" style="cursor:pointer">
+            Continue
+            <svg width="2em" height="2em" viewBox="0 0 16 16"
+                 class="bi bi-arrow-right-short"
+                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+            </svg>
+        </a>
+
+    </div>
+    <div id="next-step" align="center" style="background: #f6f9fc; height: 100vh;">
+        <h5 class="mt-5">
             <b>Sign in with Matric Number</b>
             <p style="font-size: 15px">Username is case-sensitive.
                 Kindly ensure the alphabet is in upper-case.</p>
-        </h3>
-        <div class="col-8">
+        </h5>
+        <div class="container" align="center">
             <form id="login-form" method="POST" action="">
                 {% csrf_token %}
                 <div class="form-group">
@@ -80,26 +179,47 @@
             </form>
         </div>
     </div>
-    <div class="left-side">
-        <a class="brand-logo order-row" href="/">
-            <div style="display:block">
-                <h2 style="color: white;display: inline-block; font-family:
-                    vremenagrotesk,sans-serif;font-weight: 900;">
-                    <b>CAMPUS CONNECT</b>
-                </h2>
-            </div>
-        </a>
-        <br>
-        <br>
-        {% include 'users/svg.html' %}
-        <h3 class="mb-2 text-light">
-            <b>Hey, welcome!</b>
-            <br>
-            <b class="mt-2">Sign in to CAMPUS CONNECT.</b>
-        </h3>
-    </div>
-    <!--    <a href="javascript:history.go(-1)" class="btn mt-2 mb-3 btn-outline-info">&#x2190; Go back</a>-->
-</div>
+</section>
+<style>
+    @media screen and only (max-width: 1000px){
+        .large_screen_login{
+            display: none !important;
+        }
+    }
+    @media only screen and (max-width: 1000px){
+        .phone_size{
+            display: block !important;
+            }
+    }
+    .phone_size{
+        display: none;
+    }
+    #next-step{display: none; height: 100vh;}
+    #reg-form {
+        background-color: lightblue;
+        color: white;
+        text-align: center;
+        padding: 50px;
+        height: 100vh;
+    }
+
+    .left-side p {
+        margin-bottom: 30px;
+    }
+</style>
+<script>
+    $("#show-next").on("click", function(e){
+        e.preventDefault();
+      $("#prev-reg, #next-step").css("display", "block");
+      $("#show-next, #reg-form").css("display", "none");
+    });
+
+    $("#prev-reg").click(function(){
+      $("#prev-reg, #next-step").css("display", "none");
+      $("#show-next, #reg-form").css("display", "block");
+    });
+
+</script>
 <style>
     .switch {
       position: relative;
@@ -238,14 +358,14 @@
 </style>
 <script>
     let paymentForm = document.getElementById('login-form');
-	if (paymentForm) {
-		paymentForm.addEventListener('submit', function () {
-		    console.log("login button clicked");
-			changeLoadingState(true);
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', function () {
+            console.log("login button clicked");
+            changeLoadingState(true);
 
-	    }
-	  );
-	}
+        }
+      );
+    }
 
     var changeLoadingState = function(isLoading) {
         if (isLoading) {

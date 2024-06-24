@@ -6,7 +6,8 @@
 {% load crispy_forms_tags %}
 {% block title %} {{user_profile}} | Campus Connect {% endblock %}
 
-
+{% load pwa %}
+{% progressive_web_app_meta %}
 {% block content %}
 <style>
     .user_background {

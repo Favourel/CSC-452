@@ -4,7 +4,8 @@
 {% load crispy_forms_tags %}
 {% load mentions %}
 {% block title %} {{ object.author }}: "{{ object.content|truncatewords:"3" }}" {% endblock %}
-
+{% load pwa %}
+{% progressive_web_app_meta %}
 {% block content %}
 
 <div class="col-lg-6">
