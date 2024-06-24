@@ -82,7 +82,7 @@
                 {% endfor %}
             </div>
             <hr>
-            <p>{{ object.date_posted|time }} &bull; {{ object.date_posted|date }} {% if object.os %} &bull; Favour for {{ object.os }} {% endif %}</p>
+            <p>{{ object.date_posted|time }} &bull; {{ object.date_posted|date }} {% if object.os %} &bull; FacetFriends for {{ object.os }} {% endif %}</p>
             <hr class="my-2">
             <span class="d-flex">
                 <div data-toggle="tooltip" data-placement="top" title="Click to view liked by"
@@ -193,7 +193,7 @@
     <br>
 </div>
 
-<div class="col-lg-3">
+<div class="col-lg-3 phone_size">
     <div class="box-element">
         <form action="{% url 'search' %}" autocomplete="off" method="GET" value="{{request.GET.q}}">
             <input type="text" name="q" value="{{request.GET.q}}" class="form-control"
@@ -519,7 +519,7 @@ function openCity(evt, cityName) {
                     <h6>Are you sure you want to delete <b style="color: #007bff">
                         {{ object.content|safe|truncatechars:"10" }}</b> from
                         your
-                        Blog?</h6>
+                        Post?</h6>
                     <div class="float-right">
                         <input type="hidden" name="next" value="{{ request.path }}">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel

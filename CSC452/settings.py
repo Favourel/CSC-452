@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ah&*_0ivk1lcja^ykntmn#a#bv!s0b4kfy3cd3ekd=zwm)0-37'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -95,6 +97,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# database_url = os.environ.get("DATABASE_URL")
+# DATABASES["default"] = dj_database_url.parse(database_url)
 
 
 # Password validation
@@ -176,8 +180,8 @@ PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js'
 
 PWA_APP_NAME = 'CSC452'
 PWA_APP_DESCRIPTION = "CSC 452 - MOBILE COMPUTING"
-PWA_APP_THEME_COLOR = '#bcac76'
-PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_THEME_COLOR = '#17a2b8'
+PWA_APP_BACKGROUND_COLOR = '#f6f9fc'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = "/"
 PWA_APP_ORIENTATION = 'any'
