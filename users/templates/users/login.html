@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="icon" href="{% static 'images/falcon_LGfm6ox.png' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="{% static 'images/falcon_LGfm6ox.png' %}">
     <title>
         CSC 452 - Campus Connect | Login
     </title>
@@ -143,7 +145,7 @@
                 Kindly ensure the alphabet is in upper-case.</p>
         </h5>
         <div class="container" align="center">
-            <form id="login-form" method="POST" action="">
+            <form id="login-formm" method="POST" action="">
                 {% csrf_token %}
                 <div class="form-group">
                     <br>
@@ -155,18 +157,18 @@
                     </small>
                     <br>
                     <label class="switch">
-                        <input type="checkbox" id="togglePassword">
+                        <input type="checkbox" id="togglePasswordd">
                         <span class="slider round"></span>
                     </label>
                 </div>
 
                 <br>
-                <button style="border-radius: 24px" id="submit" type="submit" class="btn btn-info btn-block">
-                    <div class="spinner-border text-light hidden" id="spinner" role="status">
+                <button style="border-radius: 24px" id="submitt" type="submit" class="btn btn-info btn-block">
+                    <div class="spinner-border text-light hidden" id="spinnerr" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
 
-                    <span id="button-text">LOGIN</span>
+                    <span id="button-textt">LOGIN</span>
                 </button>
                 <style>
                     .spinner-border {
@@ -301,6 +303,16 @@
         password.setAttribute('type', type);
         // toggle the eye slash icon
     });
+
+    const togglePassword = document.querySelector('#togglePasswordd');
+    const password = document.querySelector('#id_passwordd');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+    });
 </script>
 
 <style>
@@ -376,6 +388,29 @@
             document.getElementById("submit").disabled = false;
             document.querySelector("#spinner").classList.add("hidden");
             document.querySelector("#button-text").classList.remove("hidden");
+        }
+    };
+
+
+    let paymentForm = document.getElementById('login-formm');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', function () {
+            console.log("login button clicked");
+            changeLoadingState(true);
+
+        }
+      );
+    }
+
+    var changeLoadingState = function(isLoading) {
+        if (isLoading) {
+            document.getElementById("submitt").disabled = true;
+            document.querySelector("#spinnerr").classList.remove("hidden");
+            document.querySelector("#button-textt").classList.add("hidden");
+        } else {
+            document.getElementById("submitt").disabled = false;
+            document.querySelector("#spinnerr").classList.add("hidden");
+            document.querySelector("#button-textt").classList.remove("hidden");
         }
     };
 

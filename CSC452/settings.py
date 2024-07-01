@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-
-# ALLOWED_HOSTS = ["127.0.0.1"]
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+DEBUG = True
+# DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+#
+ALLOWED_HOSTS = ["127.0.0.1"]
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'pwa',
-    'djrichtextfield',
+    # 'djrichtextfield',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -137,6 +137,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# The directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/images/'
@@ -180,7 +183,7 @@ PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js'
 
 PWA_APP_NAME = 'CSC452'
 PWA_APP_DESCRIPTION = "CSC 452 - MOBILE COMPUTING"
-PWA_APP_THEME_COLOR = '#17a2b8'
+PWA_APP_THEME_COLOR = '#f6f9fc'
 PWA_APP_BACKGROUND_COLOR = '#f6f9fc'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = "/"
